@@ -25,11 +25,7 @@
 
 
           <main class="container">
-            <!-- 
-            Form
-           -->
-
-           <hr class="bg-success">
+            
 
            <!-- 
             Filters
@@ -52,6 +48,50 @@
              <section class="mb-4 pb-5">
                 <div  class="row row-cols-1 row-cols-md-2 g-4" id="blog-list"></div>
              </section>
+
+             <hr>
+
+             <!-- 
+            Form
+           -->
+        <section class="container py-5 text-center align-self-center">
+            <article >
+                <h2 class="text-success" >
+                    Share Your Thoughts with the World
+                </h2>
+                
+<p>
+    Got something to say? Write and publish your own blog in just a few steps. Whether it's a personal story, an industry insight, or a trending topic, your voice deserves to be heard.
+</p>
+</article>
+<form class="py-4">
+    <h3 class="text-success">
+        Start Writing Now! </h3>
+    <!-- [Form fields go here: Title, Category, Content, Submit Button] -->
+    <div class="py-4">
+        <label for="title-input" class="form-label">Title:</label>
+        <input type="text" name="title-input" id="title-input" class="form-control"  required>
+    </div>
+    <div class="py-4">
+        <label for="category-input" class="form-label">Category:</label>
+        <select name="category-input" id="category-input" class="form-select" required>
+            <option value="">Select</option>
+    <option value="travel">Travel</option>
+    <option value="entrepreneurship">Entrepreneurship</option>
+    <option value="lifestyle">Lifestyle</option>
+    <option value="technology">Technology</option>
+    <option value="business">Business</option>
+        </select>
+    </div>
+    <div class="py-4">
+        <label for="excerpt-input" class="form-label">Excerpt:</label>
+        <textarea name="excerpt-input" id="excerpt-input" cols="30" rows="10" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>
+           
+           </section>
+             
           </main>
     </body>
     <script src="script.js"></script>
