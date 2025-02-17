@@ -64,7 +64,7 @@
     Got something to say? Write and publish your own blog in just a few steps. Whether it's a personal story, an industry insight, or a trending topic, your voice deserves to be heard.
 </p>
 </article>
-<form class="py-4">
+<form class="py-4 text-success">
     <h3 class="text-success">
         Start Writing Now! </h3>
     <!-- [Form fields go here: Title, Category, Content, Submit Button] -->
@@ -85,8 +85,14 @@
     </div>
     <div class="py-4">
         <label for="excerpt-input" class="form-label">Excerpt:</label>
-        <textarea name="excerpt-input" id="excerpt-input" cols="30" rows="10" class="form-control" required></textarea>
+        <input type="text" name="excerpt-input" id="excerpt-input" class="form-control"  required>
     </div>
+
+    <div class="py-4">
+        <label for="content-input" class="form-label">Content:</label>
+        <textarea name="content-input" id="excerpt-input" cols="30" rows="10" class="form-control" required></textarea>
+    </div>
+
     <button type="submit" class="btn btn-outline-success">Submit</button>
 </form>
            
