@@ -82,7 +82,7 @@ function showBlogs(){
 
         //  card-header - Parent of 'Category of Blog' & child of card
         const cardHeader = document.createElement('div')
-        cardHeader.className = 'card-body'
+        cardHeader.className = 'text-bg-success card-header p-3'
         cardHeader.textContent = `${allBlogs[i].category}`
         card.appendChild(cardHeader)
 
@@ -93,7 +93,7 @@ function showBlogs(){
 
         //  h5 - child of card-body
         const h5Title = document.createElement('h5')
-        h5Title.className = 'card-title'
+        h5Title.className = 'card-title text-success'
         h5Title.textContent = `${allBlogs[i].title}`
         cardBody.appendChild(h5Title)
 
