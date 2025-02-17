@@ -1,4 +1,32 @@
-// Factory Function to create blog objects
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Reading</title>
+</head>
+<body>
+    <nav class="py-4 border-success border-bottom">
+        <ul class="nav justify-content-center ">
+          <li class="nav-item">
+            <a class="nav-link text-success active" aria-current="page" href="Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success" href="bloglist.html">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success" href="about-us.html">Know Us</a>
+        </ul>
+      </nav>
+      <main>
+<div id="blog-detail" class="m-5 card border-success"></div>
+      </main>
+    
+</body>
+<script>
+    // Factory Function to create blog objects
 function createBlog(id, title, category, excerpt, content) {
     return { id, title, category, excerpt, content };
 }
@@ -48,63 +76,43 @@ const allBlogs = [
 ];
 console.log(allBlogs)
 
-const rows = document.getElementById('blog-list')
-showBlogs()
+function getParameterById(id) {
+  // Get ID from URL
+  // console.log(window.location);
+  let url = new URL(window.location.href);
+  // console.log(typeof url);
+  // console.log(url.searchParams.get(id));
+  let selectedBlogId = url.searchParams.get(id);
 
-/*
- <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <a href="#" class="btn btn-success">Go somewhere</a>
-            </div>
-        </div> 
-    </div> 
-*/
-
-function showBlogs(){
-    rows.innerHTML = ''
-    for(let i = 0; i<allBlogs.length; i++){
-
-        //  col - Parent of card & child of rows
-        const col = document.createElement('div')
-        col.className='col'
-        rows.appendChild(col) 
-
-        // card - Parent of card-body & child of col
-        const card = document.createElement('div')
-        card.className = 'card border-success'
-        col.appendChild(card)
-
-        //  card-header - Parent of 'Category of Blog' & child of card
-        const cardHeader = document.createElement('div')
-        cardHeader.className = 'card-body'
-        cardHeader.textContent = `${allBlogs[i].category}`
-        card.appendChild(cardHeader)
-
-        //  card-body - Parent of h5, btn and p & child of card
-        const cardBody = document.createElement('div')
-        cardBody.className = 'card-body'
-        card.appendChild(cardBody)
-
-        //  h5 - child of card-body
-        const h5Title = document.createElement('h5')
-        h5Title.className = 'card-title'
-        h5Title.textContent = `${allBlogs[i].title}`
-        cardBody.appendChild(h5Title)
-
-        //  p - child of card-body
-        const pExcerpt = document.createElement('p')
-        pExcerpt.className = 'card-text'
-        pExcerpt.textContent = `${allBlogs[i].excerpt}`
-        cardBody.appendChild(pExcerpt)
-
-        //  btn - child of card-body
-        const detailBtn = document.createElement('a')
-        detailBtn.className = 'btn btn-success'
-        detailBtn.href = `blogdetail.html?id=${allBlogs[i].id}`
-        detailBtn.textContent = 'Know More'
-        cardBody.appendChild(detailBtn)
+  // Find the ID from database
+  let blog;
+  for (let i = 0; i < allBlogs.length; i++) {
+    console.log(allBlogs[i].id + ' ' + selectedBlogId);
+    if (allBlogs[i].id == selectedBlogId) {
+      blog = allBlogs[i];
+      break
     }
+  }
+  console.log(blog);
+
+  // Display
+  if (blog) {
+    document.getElementById('blog-detail').innerHTML = `
+    
+        <h3 class="text-bg-success card-header p-3">${blog.category}</h3>
+     
+    <div class="card-body">
+        
+   <h1 class="text-success card-title py-3">${blog.title}</h1>
+   <h2 class="text-success card-subtitle text-opacity-75 py-3">${blog.excerpt}</h2>
+    <p class="lead card-text py-3">${blog.content}</p>
+        </div>
+    `;
+  }
 }
+
+
+  getParameterById('id');
+
+</script>
+</html>
