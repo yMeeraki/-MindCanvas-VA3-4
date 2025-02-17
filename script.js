@@ -57,7 +57,7 @@ const allBlogs = [
 // console.log(allBlogs)
 
 const rows = document.getElementById('blog-list')
-showBlogs()
+showBlogs(allBlogs)
 
 /*
  <div class="col">
@@ -71,7 +71,7 @@ showBlogs()
     </div> 
 */
 
-function showBlogs(){
+function showBlogs(allBlogs){
     rows.innerHTML = ''
     console.log(allBlogs)
     for(let i = 0; i<allBlogs.length; i++){
@@ -142,7 +142,7 @@ addBlogBtn.addEventListener('click', function(){
                 content
             )
         )
-        showBlogs(); // Update the displayed list
+        showBlogs(allBlogs); // Update the displayed list
     } else {
         alert("Please fill in all fields.");
     }
@@ -153,3 +153,20 @@ addBlogBtn.addEventListener('click', function(){
     content.value = ''
 })
 
+document.getElementById('category-filter').addEventListener('change', filterBlogs)
+
+function filterBlogs(){
+    const filterCategory = document.getElementById('category-filter').value
+    if(filterCategory === 'All'){
+        showBlogs(allBlogs)
+    }
+    else{
+        let selectedCategory = []
+        for(let i = 0; i<allBlogs.length; i++){
+            if(filterCategory == allBlogs[i].category){
+                selectedCategory.push(allBlogs[i])
+            }
+        }
+        showBlogs(selectedCategory)
+    }
+}
